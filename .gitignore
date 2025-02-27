@@ -1,0 +1,77 @@
+# 🔹 Arquivos do Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 🔹 Logs e temporários
+*.log
+*.tmp
+*.bak
+*.swp
+
+# 🔹 Arquivos do Visual Studio / .NET
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vs/
+*.vscode/
+*.ncb
+*.pdb
+obj/
+bin/
+Debug/
+Release/
+TestResults/
+*.csproj.user
+*.dbmdl
+*.jfm
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# 🔹 Pacotes do .NET / NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+.nuget/
+
+# 🔹 Delphi
+__history/
+__recovery/
+*.identcache
+*.local
+*.dcu
+*.~*
+*.ddp
+*.dsk
+*.cfg
+*.stat
+*.dproj.local
+*.groupproj.local
+*.tvsconfig
+*.map
+
+# 🔹 Banco de Dados e Arquivos Temporários
+*.csv
+*.bak
+*.db
+*.log
+
+# 🔹 MQL5
+*.ex5
+*.mqh.cache
+*.ex4
+*.hst
+*.dat
+tester/
+
+# 🔹 Outros
+node_modules/
+.env
+.env.local
+dist/
+coverage/

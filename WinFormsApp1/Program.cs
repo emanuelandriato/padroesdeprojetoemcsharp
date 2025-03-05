@@ -19,10 +19,8 @@ namespace WinFormsApp1
             Application.ThreadException += new ThreadExceptionEventHandler(GlobalExceptionHandler);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(GlobalExceptionHandlerDomain);
 
-
-
+                        
             
-
 
             Application.Run(new Form1());
         }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace WinFormsApp1.models
 {
 
+    //https://youtu.be/2zWV3KpmczA
+    //exemplo de exceção personalizada
     public class EmanuelException : SystemException
     {
         public EmanuelException(Exception innerException) : base("Emanuel Pisou aqui!") 

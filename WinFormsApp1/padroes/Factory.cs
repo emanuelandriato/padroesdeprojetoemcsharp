@@ -11,7 +11,8 @@ using System.Web;
 
 namespace WinFormsApp1.padroes
 {
-   
+
+    //https://youtu.be/5oyBsfsoRts
     //interface responsável por garantir que todas as classes implementem o método Enviar
     public interface IEnvioDeNotificacao
     {
@@ -33,7 +34,7 @@ namespace WinFormsApp1.padroes
         Sugestões para email marketing:             
         MailerLite,HubSpot,SendPulse,Mailchimp,Brevo  
         */
-        public string EmailMarketingUser = "noreply@seudominio.xxx.yy";
+        public string EmailMarketingUser = "noreply@seudominio.xxx.yy";  //essas configuracoes podem ser incluidas em uma classe singleton de parametros do sistema :)
         public string EmailMarketingPass = "password";
         public string EmailMarketingHost = "smtp.exemplo.com";
         public int EmailMarketingPort = 587;

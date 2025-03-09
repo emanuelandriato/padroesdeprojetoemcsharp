@@ -34,21 +34,21 @@
             // 
             // button1
             // 
-            button1.Location = new Point(138, 51);
+            button1.Location = new Point(40, 34);
             button1.Name = "button1";
-            button1.Size = new Size(277, 29);
+            button1.Size = new Size(384, 29);
             button1.TabIndex = 0;
-            button1.Text = "Vai dar Ruim";
+            button1.Text = "Vai dar Ruim (Exception Sem Tratamento)";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
             // button2
             // 
-            button2.Location = new Point(123, 155);
+            button2.Location = new Point(40, 81);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(384, 29);
             button2.TabIndex = 1;
-            button2.Text = "button2";
+            button2.Text = "Salvar Dados? (Exception Com Tratamento)";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

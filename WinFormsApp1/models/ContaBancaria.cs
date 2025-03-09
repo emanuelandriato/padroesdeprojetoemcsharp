@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.models
 {
+    //https://youtu.be/yG1KTNxeWy0
     public class ContaBancaria
     {                  
         public ContaBancaria(string NumeroConta) 

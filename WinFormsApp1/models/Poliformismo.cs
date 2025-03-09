@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.models
 {
-
+    //https://youtu.be/L-jcyb_NNGU
     public class Pagamento
     {
         public Pagamento(decimal valor, string numeroconta)

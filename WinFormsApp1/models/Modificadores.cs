@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace WinFormsApp1.models
 {
 
+    //https://youtu.be/79ZonhtYI5M
     //modificadores (internal, public, private, protected e static)
-
 
     public class MinhaClasseEstatica
     {

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Serialization;
 namespace WinFormsApp1.models
 {
 
-    
+    //https://youtu.be/WZWVWZBBGqg
     public static class StringExtensions
     {
         public static string PrimeiraLetraMaiuscula(this string texto)

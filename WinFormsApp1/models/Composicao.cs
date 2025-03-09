@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WinFormsApp1.models
 {
 
-
+    //https://youtu.be/88XD4pS6r8I
     public class Motor
     {
         public void Ligar()

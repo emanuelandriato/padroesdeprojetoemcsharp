@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.models
 {
+
     public class Pessoa
     {
         //construtor

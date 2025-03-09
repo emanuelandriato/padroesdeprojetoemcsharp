@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.padroes
 {
-
-    //https://youtu.be/2nLDS9RF13Y
+    /// <summary>
+    /// https://youtu.be/2nLDS9RF13Y
+    /// </summary>
+    
     //classe Singleton no modelo tradicional    
     public sealed class Parametros                      //classe selada (para evitar que alguma classe herde essa classe)
     {                   

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Headers;
 using WinFormsApp1.models;
 using WinFormsApp1.padroes;
@@ -11,7 +12,16 @@ namespace WinFormsApp1
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {            
+
+            //adicionar no serviceProvider, as interfaces e classes, para que ele saiba o que terá que instanciar
+            var serviceProvider = new ServiceCollection()
+                .AddTransient<IPedido, Pedido>()                
+                .AddTransient<IPagamentos, Pagamentos>()                
+                .BuildServiceProvider();
+
+
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
@@ -19,8 +29,15 @@ namespace WinFormsApp1
             Application.ThreadException += new ThreadExceptionEventHandler(GlobalExceptionHandler);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(GlobalExceptionHandlerDomain);
 
-                        
-            
+            //de forma manual
+            //IPagamentos pag = new Pagamentos();
+            //var teste = new Pedido(pag);           
+            //teste.EfetuarCompra();            
+
+            //framework se vira em instanciar a classe Pedido e tratar o ciclo de vida do objeto
+            var pedido = serviceProvider.GetRequiredService<IPedido>();
+            pedido.EfetuarCompra();
+
 
             Application.Run(new Form1());
         }

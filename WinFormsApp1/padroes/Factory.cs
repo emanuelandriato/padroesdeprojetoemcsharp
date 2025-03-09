@@ -11,8 +11,10 @@ using System.Web;
 
 namespace WinFormsApp1.padroes
 {
-
-    //https://youtu.be/5oyBsfsoRts
+    /// <summary>
+    /// https://youtu.be/5oyBsfsoRts
+    /// </summary>
+        
     //interface responsável por garantir que todas as classes implementem o método Enviar
     public interface IEnvioDeNotificacao
     {

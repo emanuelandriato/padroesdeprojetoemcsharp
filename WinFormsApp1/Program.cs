@@ -1,5 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Net.Http.Headers;
+using System.Numerics;
 using WinFormsApp1.models;
 using WinFormsApp1.padroes;
 
@@ -16,27 +18,69 @@ namespace WinFormsApp1
 
             //adicionar no serviceProvider, as interfaces e classes, para que ele saiba o que terá que instanciar
             var serviceProvider = new ServiceCollection()
-                .AddTransient<IPedido, Pedido>()                
-                .AddTransient<IPagamentos, Pagamentos>()                
-                .BuildServiceProvider();
-
-
+                .AddScoped<IPedido, Pedido>()                
+                .AddScoped<IPagamentos, Pagamentos>()
+                .AddScoped<IAssistenteEmIngles, AssistenteEmIngles>()
+                .AddScoped<IAssistenteVirtualAdapter, AssistenteVirtualAdapter>()
+                .AddSingleton<ITV, TV>()
+                .AddSingleton<ISistemaDeSom, SistemaDeSom>()
+                .AddSingleton<IReprodutorDeMidia, ReprodutorDeMidia>()
+                .AddSingleton<IIluminacao, Iluminacao>()
+                .AddSingleton<IHomeTheaterFacade, HomeTheaterFacade>()
+                .AddSingleton<HomeTheaterFacade>()
+                .BuildServiceProvider();            
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-
             Application.ThreadException += new ThreadExceptionEventHandler(GlobalExceptionHandler);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(GlobalExceptionHandlerDomain);
 
-            //de forma manual
-            //IPagamentos pag = new Pagamentos();
-            //var teste = new Pedido(pag);           
-            //teste.EfetuarCompra();            
+                        
+            bool testarDI = false;
+            if (testarDI)
+            {
+                //Dependency Injection aonde eu instancio Pagamentos 
+                IPagamentos pag = new Pagamentos();
+                var teste = new Pedido(pag);
+                teste.EfetuarCompra();
 
-            //framework se vira em instanciar a classe Pedido e tratar o ciclo de vida do objeto
-            var pedido = serviceProvider.GetRequiredService<IPedido>();
-            pedido.EfetuarCompra();
+                //DI, deixando o framework se virar e gerenciar a instancia da classe
+                var pedido = serviceProvider.GetRequiredService<IPedido>();
+                pedido.EfetuarCompra();
+            }
+
+
+            bool testarAdapter = false;
+            if (testarAdapter)
+            {
+
+                var assistenteAdaptado = serviceProvider.GetRequiredService<IAssistenteVirtualAdapter>();
+                assistenteAdaptado.ResponderEmPortugues("Olá, como você está?");
+            }
+
+            bool testarDecorator = false;
+            if (testarDecorator)
+            {
+                //Decorando nossa pizza com ingredientes extras!
+                IPizza minhaPizza = new PizzaSimples();
+                minhaPizza = new BordaRecheada(minhaPizza);
+                minhaPizza = new Queijo(minhaPizza);
+                minhaPizza = new Tomate(minhaPizza);
+                minhaPizza = new Calabresa(minhaPizza);
+
+                Console.WriteLine($"Descrição: {minhaPizza.Descricao()}");
+                Console.WriteLine($"Preço total: R$ {minhaPizza.Preco:F2}");
+                
+            }
+
+            bool testarFacade = true;
+            if (testarFacade)
+            {
+                var homeTheater = serviceProvider.GetRequiredService<IHomeTheaterFacade>();
+                homeTheater.AssistirFilme();
+            }
+
 
 
             Application.Run(new Form1());

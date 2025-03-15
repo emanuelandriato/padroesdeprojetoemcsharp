@@ -22,12 +22,12 @@ namespace WinFormsApp1
                 .AddScoped<IPagamentos, Pagamentos>()
                 .AddScoped<IAssistenteEmIngles, AssistenteEmIngles>()
                 .AddScoped<IAssistenteVirtualAdapter, AssistenteVirtualAdapter>()
-                .AddSingleton<ITV, TV>()
-                .AddSingleton<ISistemaDeSom, SistemaDeSom>()
-                .AddSingleton<IReprodutorDeMidia, ReprodutorDeMidia>()
-                .AddSingleton<IIluminacao, Iluminacao>()
-                .AddSingleton<IHomeTheaterFacade, HomeTheaterFacade>()
-                .AddSingleton<HomeTheaterFacade>()
+                .AddScoped<ITV, TV>()
+                .AddScoped<ISistemaDeSom, SistemaDeSom>()
+                .AddScoped<IReprodutorDeMidia, ReprodutorDeMidia>()
+                .AddScoped<IIluminacao, Iluminacao>()
+                .AddScoped<IHomeTheaterFacade, HomeTheaterFacade>()                
+                .AddSingleton<ITemperatura, Temperatura>()
                 .BuildServiceProvider();            
 
             // To customize application configuration such as set high DPI settings or default font,
@@ -74,16 +74,39 @@ namespace WinFormsApp1
                 
             }
 
-            bool testarFacade = true;
+            bool testarFacade = false;
             if (testarFacade)
             {
                 var homeTheater = serviceProvider.GetRequiredService<IHomeTheaterFacade>();
                 homeTheater.AssistirFilme();
             }
 
+            bool testandoObserver = true;
+            if(testandoObserver)
+            {
+                var temperatura = serviceProvider.GetRequiredService<ITemperatura>();
+                
+                ExibidorTemperatura exibirTemperatura = new ExibidorTemperatura();
+                temperatura.AdicionarObservador(exibirTemperatura);
+
+                AlertaTemperaturaAlta alerta = new AlertaTemperaturaAlta();
+                temperatura.AdicionarObservador(alerta);
+
+                temperatura.AtualizarTemperatura(15);
+
+                temperatura.AtualizarTemperatura(33);
+            }
 
 
-            Application.Run(new Form1());
+
+
+
+
+
+
+
+            var temp = serviceProvider.GetRequiredService<ITemperatura>();
+            Application.Run(new Form1(temp));
         }
 
 
